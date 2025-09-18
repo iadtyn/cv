@@ -1,0 +1,198 @@
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill & #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill & #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}
+    }
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{A}\LARGE{DITYA }\Huge{N}\LARGE{AIR}\\[5pt] % Reduced vertical space below name
+\href{https://github.com/iadtyn}{\raisebox{-0.05\height}\faGithub\ iadtyn} \ $|$ \
+\href{https://linkedin.com/in/adtyn}{\raisebox{-0.05\height}\faLinkedin\ adtyn} \ $|$ \
+\href{mailto:nairaditya92@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ nairaditya92@gmail.com} \ $|$ \
+\href{tel:+918668401243}{\raisebox{-0.05\height}\faMobile \ +91 86684 01243} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+\begin{tabularx}{\linewidth}{@{} l r @{}}
+\textbf{Web Developer Intern, J.R and Associates} & {July 4, 2022 – August 8, 2022} \\
+\multicolumn{2}{@{}X@{}}{Borivali, Mumbai}\\[2pt] % Reduced vertical space
+\multicolumn{2}{@{}X@{}}{\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=1.5em] % No space between items
+    \item Developed interactive and responsive websites using HTML, CSS, JavaScript, PHP, and MySQL.
+    \item Built dynamic web pages, handled user input, and managed backend data efficiently.
+    \item Improved front-end design and database integration skills through real-world projects.
+\end{itemize}}
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% PROJECTS
+%----------------------------------------------------------------------------------------
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{@{} l r @{}}
+\href{https://driftlane.vercel.app}{\underline{\textbf{Driftlane}}} \hfill \href{https://github.com/iadtyn/driftlane/} {\raisebox{-0.05\height}\faGithub} & {Jul 2025} \\[2pt] % Reduced vertical space
+\multicolumn{2}{@{}X@{}}{\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=1.5em]
+    \item AI-powered adventure planner that generates personalized itineraries and recommendations based on user mood, group type, and budget.
+    \item Frontend in Next.js (App Router) and Tailwind CSS with dark-glass UI, filters, and smooth animations.
+    \item Backend in Flask serving ML models (TF-IDF + KNN, KMeans, RandomForest) trained on curated datasets.
+    \item Itinerary generation via LLM (Gemini), with dynamic image fetching from Wikipedia.
+    \item Robust fallback handling, modular API design, and adaptive filtering across devices.
+\end{itemize}}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} l r @{}}
+\href{https://tryelle.vercel.app/}{\underline{\textbf{Tryelle}}} \hfill \href{https://github.com/iadtyn/tryelle/} {\raisebox{-0.05\height}\faGithub} & {Jul 2025} \\[2pt] % Reduced vertical space
+\multicolumn{2}{@{}X@{}}{\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=1.5em]
+    \item A browser-based virtual try-on application that uses MediaPipe to let users try different clothing outfits in real time using their webcam.
+    \item Backend in Flask serving Python ML models for key features.
+    \item No downloads, no installations — just open the browser and try on digital outfits instantly!
+    \item Features include live webcam pose detection, realistic overlay of digital shirts, and a responsive design with Tailwind CSS.
+    \item Built with HTML5, CSS3 (Tailwind), JavaScript (Vanilla), MediaPipe for pose estimation, and Canvas API for rendering.
+\end{itemize}}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} l r @{}}
+\href{https://vgbnd.vercel.app}{\underline{\textbf{Vagabond Inc.}}} \hfill \href{https://github.com/iadtyn/vgbnd/} {\raisebox{-0.05\height}\faGithub} & {Jun 2024} \\[2pt] % Reduced vertical space
+\multicolumn{2}{@{}X@{}}{\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=1.5em]
+    \item A full-stack travel discovery and booking platform for campers, trekkers, and adventure seekers across India. Built using the MERN stack with a seamless, responsive UI.
+    \item Includes detailed destination pages, interactive booking forms with real-time validations, and a secure authentication system.
+    \item Backend supports secure user data and booking storage, along with automatic downloadable receipts.
+    \item Highlights handpicked offbeat locations curated for nature and travel enthusiasts.
+\end{itemize}}
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+2023 - 2026 & Bachelor of Engineering in Data Engineering, \textbf{University of Mumbai} \\
+& \hfill GPA: 7.62\\
+2020 - 2023 & Diploma in Computer Engineering, \textbf{Maharashtra State Board of Technical Education} \\
+& \hfill Percentage: 79.87\%\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Languages:} & JavaScript, Dart, Python, C, R \\
+\textbf{Frameworks/Libraries:} & Express.js, React.js, Next.js, Node.js, Flutter, Flask, Tailwind CSS \\
+\textbf{Databases:} & MongoDB, Postgresql, MySQL \\
+\textbf{Operating Systems:} & Linux \\
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}

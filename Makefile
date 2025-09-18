@@ -1,4 +1,4 @@
-NAME=cv
+NAME=adicv
 
 all:
 	latexmk -pdf ${NAME}.tex
